@@ -8,7 +8,7 @@ const Start = ({ navigation }) => {
  return (
    <ImageBackground source={require("../assets/BackgroundImage.png")} style={styles.container}>
     <Text style={styles.title}>Chat App</Text>
-    <View> 
+    <View style={styles.inputContainer}> 
         <TextInput
             style={styles.textInput}
             value={name}
@@ -18,7 +18,7 @@ const Start = ({ navigation }) => {
         <Text style={styles.text}>Choose you background color:</Text>
         <View style={styles.colors}>
             {colors.map((color, index) => (
-                <TouchableOpacity key={index} style={[styles.box, { backgroundColor: color }, background === color && styles.selected,]} onPress={() => setBackground(color)} />
+                <TouchableOpacity key={index} style={[styles.circle, { backgroundColor: color }, background === color && styles.selected,]} onPress={() => setBackground(color)} />
             ))}
         </View>
         <TouchableOpacity style={styles.button}
@@ -39,7 +39,15 @@ const styles = StyleSheet.create({
  title: {
     fontSize: 45, 
     fontWeight: '600',
-    color: '#FFFFFF'
+    color: '#FFFFFF', 
+    marginTop: 70
+ },
+ inputContainer: {
+    width: '88%',
+    height: '44%',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
  },
  textInput: {
     width: "88%",
@@ -50,14 +58,27 @@ const styles = StyleSheet.create({
     fontSize: 16, 
     fontWeight: '600', 
     color: '#757083', 
-
   },
   text: {
     fontSize: 16, 
     fontWeight: '300', 
-    color: '#757083'
+    color: '#757083', 
+    marginBottom: 10
+  },
+  colors: {
+    flexDirection: 'row',
   }, 
+  circle: {
+    width: 50,
+    height: 50,
+    margin: 10,
+    borderRadius: 25,
+  },
   button: {
+    width: '88%',
+    margin: 20,
+    padding: 20,
+    alignItems: 'center',
     backgroundColor: '#757083'
   }, 
   buttonText: {
