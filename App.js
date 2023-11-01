@@ -5,12 +5,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './components/Start';
 import Chat from './components/Chat';
 
-export default function App() {
+// Create the navigator
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+       <Stack.Navigator
+        initialRouteName="Start"
+      >
+        <Stack.Screen
+          name="Start"
+          component={Start}
+        />
+        <Stack.Screen
+          name="Chat"
+          component={Chat}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -22,3 +35,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
