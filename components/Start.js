@@ -22,7 +22,7 @@ const Start = ({ navigation }) => {
             ))}
         </View>
         <TouchableOpacity style={styles.button}
-            onPress={() => navigation.navigate('Chat', { name: name})}>
+            onPress={() => navigation.navigate('Chat', { name: name, color: background})}>
             <Text style={styles.buttonText}>Start Chatting</Text>
         </TouchableOpacity>
     </View>
