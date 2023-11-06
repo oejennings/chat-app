@@ -5,10 +5,11 @@ import { StyleSheet, View, Text } from 'react-native';
 const Chat = ({ route, navigation }) => {
     const { name, color } = route.params;
     const [messages, setMessages] = useState([]);
-
+    const onSend = (newMessages) => {
+        setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
+    }
 
     useEffect(() => {
-        navigation.setOptions({ title: name });
         setMessages([
             {
                 _id: 1,
@@ -21,16 +22,22 @@ const Chat = ({ route, navigation }) => {
                 }, 
             },
         ]);
-      }, []);
-    
-    const onSend = (newMessages) => {
-        setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
-    }
+    }, []);
 
-use
+    useEffect(() => {
+        navigation.setOptions({ title: name })
+    }, []);
+    
+    
  return (
    <View style={[styles.container, {backgroundColor: color}]}>
-     <Text>Hello Chat!</Text>
+     <GiftedChat
+      messages={messages}
+      onSend={messages => onSend(messages)}
+      user={{
+        _id: 1
+      }}
+    />
    </View>
  );
 }
