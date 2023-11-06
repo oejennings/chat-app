@@ -42,12 +42,12 @@ const Chat = ({ route, navigation }) => {
                 backgroundColor: "#000"
                 },
                 left: {
-                backgroundColor: "#FFF"
+                backgroundColor: "#00F"
                 }
             }}
             />
         }
-        
+
  return (
    <View style={[styles.container, {backgroundColor: color}]}>
      <GiftedChat
