@@ -1,13 +1,29 @@
-import { useEffect } from 'react';
+import { GiftedChat } from 'react-native-gifted-chat';
+import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 const Chat = ({ route, navigation }) => {
     const { name, color } = route.params;
-    
+    const [messages, setMessages] = useState([]);
+
+
     useEffect(() => {
         navigation.setOptions({ title: name });
+        setMessages([
+            {
+                _id: 1,
+                text: "Hello developer",
+                createdAt: new Date(),
+                user: {
+                  _id: 2,
+                  name: "React Native",
+                  avatar: "https://placeimg.com/140/140/any",
+                }, 
+            },
+        ]);
       }, []);
 
+use
  return (
    <View style={[styles.container, {backgroundColor: color}]}>
      <Text>Hello Chat!</Text>
