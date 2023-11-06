@@ -1,6 +1,6 @@
 import { GiftedChat } from 'react-native-gifted-chat';
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-native';
 
 const Chat = ({ route, navigation }) => {
     const { name, color } = route.params;
@@ -28,7 +28,7 @@ const Chat = ({ route, navigation }) => {
         navigation.setOptions({ title: name })
     }, []);
     
-    
+
  return (
    <View style={[styles.container, {backgroundColor: color}]}>
      <GiftedChat
@@ -38,6 +38,8 @@ const Chat = ({ route, navigation }) => {
         _id: 1
       }}
     />
+    { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
+    {Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null}
    </View>
  );
 }
@@ -45,8 +47,6 @@ const Chat = ({ route, navigation }) => {
 const styles = StyleSheet.create({
  container: {
    flex: 1,
-   justifyContent: 'center',
-   alignItems: 'center'
  }
 });
 
