@@ -39,7 +39,7 @@ const Chat = ({ route, navigation }) => {
             {...props}
             wrapperStyle={{
                 right: {
-                backgroundColor: "#00F"
+                backgroundColor: "#FFF"
                 },
                 left: {
                 backgroundColor: "#000"
