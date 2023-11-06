@@ -22,6 +22,10 @@ const Chat = ({ route, navigation }) => {
             },
         ]);
       }, []);
+    
+    const onSend = (newMessages) => {
+        setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
+    }
 
 use
  return (
