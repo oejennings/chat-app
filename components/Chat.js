@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-na
 import { collection, getDocs, addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 
 const Chat = ({ route, navigation, db }) => {
-    const { name, color } = route.params;
+    const { name, color, userID} = route.params;
     const [messages, setMessages] = useState([]);
     const onSend = (newMessages) => {
         addDoc(collection(db, "messages"), newMessages[0])
@@ -52,7 +52,8 @@ const Chat = ({ route, navigation, db }) => {
       renderBubble={renderBubble}
       onSend={messages => onSend(messages)}
       user={{
-        _id: 1
+        _id: userID,
+        name: name
       }}
     />
     { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
