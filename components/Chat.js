@@ -8,7 +8,7 @@ const Chat = ({ route, navigation, db }) => {
     const [messages, setMessages] = useState([]);
     const onSend = (newMessages) => {
         addDoc(collection(db, "messages"), newMessages[0])
-      }
+    }
    
     useEffect(() => {
         navigation.setOptions({ title: name });
