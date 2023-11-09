@@ -1,6 +1,7 @@
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-native';
+import { collection, getDocs } from "firebase/firestore";
 
 const Chat = ({ route, navigation }) => {
     const { name, color } = route.params;
