@@ -20,6 +20,9 @@ const Chat = ({ route, navigation, db, isConnected }) => {
         navigation.setOptions({ title: name });
         let unsubMessages;
         if (isConnected === true) {
+            if (unsubMessages) unsubMessages();
+            unsubMessages = null;
+            
             const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
             unsubMessages = onSnapshot(q, (docs) => {
             let newMessages = [];
@@ -37,7 +40,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
         return () => {
           if (unsubMessages) unsubMessages();
         }  
-    }, []);
+    }, [isConnected]);
 
    
     
