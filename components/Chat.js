@@ -16,6 +16,11 @@ const Chat = ({ route, navigation, db, isConnected }) => {
         setMessages(JSON.parse(cachedMessages));
       };
 
+    const renderInputToolbar = (props) => {
+        if (isConnected) return <InputToolbar {...props} />;
+        else return null;
+        }
+
    let unsubMessages;
 
     useEffect(() => {
@@ -67,11 +72,6 @@ const Chat = ({ route, navigation, db, isConnected }) => {
             />
         }
     
-    const renderInputToolbar = (props) => {
-        if (isConnected) return <InputToolbar {...props} />;
-        else return null;
-        }
-
  return (
    <View style={[styles.container, {backgroundColor: color}]}>
      <GiftedChat
