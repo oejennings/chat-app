@@ -18,9 +18,10 @@ const Chat = ({ route, navigation, db, isConnected }) => {
    
     useEffect(() => {
         navigation.setOptions({ title: name });
+        let unsubMessages;
         if (isConnected === true) {
             const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-            const unsubMessages = onSnapshot(q, (docs) => {
+            unsubMessages = onSnapshot(q, (docs) => {
             let newMessages = [];
             docs.forEach(doc => {
                 newMessages.push({
