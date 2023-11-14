@@ -15,10 +15,12 @@ const Chat = ({ route, navigation, db, isConnected }) => {
         const cachedMessages = await AsyncStorage.getItem('messages') || '[]';
         setMessages(JSON.parse(cachedMessages));
       };
-   
+
+   let unsubMessages;
+
     useEffect(() => {
         navigation.setOptions({ title: name });
-        let unsubMessages;
+
         if (isConnected === true) {
             if (unsubMessages) unsubMessages();
             unsubMessages = null;
@@ -33,6 +35,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
                 createdAt: new Date(doc.data().createdAt.toMillis())
                 })
             })
+            cachedMessages(newMessages);
             setMessages(newMessages);
             })
         } else loadCachedMessages
