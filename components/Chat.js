@@ -4,27 +4,35 @@ import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-na
 import { collection, getDocs, addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Chat = ({ route, navigation, db }) => {
+const Chat = ({ route, navigation, db, isConnected }) => {
     const { name, color, userID} = route.params;
     const [messages, setMessages] = useState([]);
     const onSend = (newMessages) => {
         addDoc(collection(db, "messages"), newMessages[0])
     }
+
+    const loadCachedMessages = async () => {
+        const cachedMessages = await AsyncStorage.getItem('messages') || '[]';
+        setMessages(JSON.parse(cachedMessages));
+      };
    
     useEffect(() => {
         navigation.setOptions({ title: name });
-        const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-        const unsubMessages = onSnapshot(q, (docs) => {
-          let newMessages = [];
-          docs.forEach(doc => {
-            newMessages.push({
-              id: doc.id,
-              ...doc.data(),
-              createdAt: new Date(doc.data().createdAt.toMillis())
+        if (isConnected === true) {
+            const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+            const unsubMessages = onSnapshot(q, (docs) => {
+            let newMessages = [];
+            docs.forEach(doc => {
+                newMessages.push({
+                id: doc.id,
+                ...doc.data(),
+                createdAt: new Date(doc.data().createdAt.toMillis())
+                })
             })
-          })
-          setMessages(newMessages);
-        })
+            setMessages(newMessages);
+            })
+        } else loadCachedMessages
+        
         return () => {
           if (unsubMessages) unsubMessages();
         }  
