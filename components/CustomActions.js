@@ -26,6 +26,17 @@ const CustomActions = ({}) => {
           else setImage(null)
         }
     };
+
+    const getLocation = async () => {
+        let permissions = await Location.requestForegroundPermissionsAsync();
+    
+        if (permissions?.granted) {
+          const location = await Location.getCurrentPositionAsync({});
+          setLocation(location);
+        } else {
+          Alert.alert("Permissions to read location aren't granted");
+        }
+      };
     
     return (
 
