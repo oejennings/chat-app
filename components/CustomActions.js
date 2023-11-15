@@ -1,7 +1,7 @@
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import MapView from 'react-native-maps';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
 const CustomActions = ({ wrapperStyle, iconTextStyle }) => {
     const onActionPress = () => {}
