@@ -2,6 +2,7 @@ import { GiftedChat, Bubble, InputToolbar } from 'react-native-gifted-chat';
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import { collection, getDocs, addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
+import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Chat = ({ route, navigation, db, isConnected }) => {
