@@ -40,7 +40,7 @@ const CustomActions = ({}) => {
     
     return (
 
-    )
+    );
 }
 
 const styles = StyleSheet.create({

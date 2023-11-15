@@ -15,12 +15,16 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     const loadCachedMessages = async () => {
         const cachedMessages = await AsyncStorage.getItem('messages') || '[]';
         setMessages(JSON.parse(cachedMessages));
-      };
+    };
 
     const renderInputToolbar = (props) => {
         if (isConnected) return <InputToolbar {...props} />;
         else return null;
-        }
+    }
+
+     const renderCustomActions = (props) => {
+        return <CustomActions {...props} />;
+    };
 
    let unsubMessages;
 
@@ -79,6 +83,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
       messages={messages}
       renderBubble={renderBubble}
       renderInputToolbar={renderInputToolbar}
+      renderActions={renderCustomActions}
       onSend={messages => onSend(messages)}
       user={{
         _id: userID,
