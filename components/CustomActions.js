@@ -3,7 +3,8 @@ import * as Location from 'expo-location';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { useActionSheet } from '@expo/react-native-action-sheet';
 
-const CustomActions = ({ wrapperStyle, iconTextStyle, onSend }) => {
+
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
     const actionSheet = useActionSheet();
 
     const onActionPress = () => {
