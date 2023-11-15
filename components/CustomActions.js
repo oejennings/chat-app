@@ -1,6 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
-import MapView from 'react-native-maps';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { useActionSheet } from '@expo/react-native-action-sheet';
 
@@ -36,9 +35,12 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend }) => {
     
         if (permissions?.granted) {
            let result = await ImagePicker.launchImageLibraryAsync();
-    
-          if (!result.canceled) setImage(result.assets[0]);
-          else setImage(null)
+           if (!result.canceled) {
+            const imageURI = result.assets[0].uri;
+            const response = await fetch(imageURI);
+            const blob = await response.blob();
+          }
+        else Alert.alert("Permissions haven't been granted.");
         }
       };
     
