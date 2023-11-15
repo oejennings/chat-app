@@ -2,9 +2,10 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { useActionSheet } from '@expo/react-native-action-sheet';
+import { ref, uploadBytes } from 'firebase/storage';
 
 
-const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID }) => {
     const actionSheet = useActionSheet();
 
     const onActionPress = () => {
@@ -40,6 +41,10 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
             const imageURI = result.assets[0].uri;
             const response = await fetch(imageURI);
             const blob = await response.blob();
+            const newUploadRef = ref(storage, uniqueRefString);
+            uploadBytes(newUploadRef, blob).then(async (snapshot) => {
+                console.log('File has been uploaded successfully');
+        }) 
           }
         else Alert.alert("Permissions haven't been granted.");
         }
@@ -71,6 +76,12 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
           } else Alert.alert("Error occurred while fetching location");
         } else Alert.alert("Permissions haven't been granted.");
       };
+
+    const generateReference = (uri) => {
+        const timeStamp = (new Date()).getTime();
+        const imageName = uri.split("/")[uri.split("/").length - 1];
+        return `${userID}-${timeStamp}-${imageName}`;
+    };
     
     return (
         <TouchableOpacity style={styles.container} onPress={onActionPress}>
