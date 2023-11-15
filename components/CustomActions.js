@@ -3,7 +3,7 @@ import * as Location from 'expo-location';
 import MapView from 'react-native-maps';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-const CustomActions = ({}) => {
+const CustomActions = ({ wrapperStyle, iconTextStyle }) => {
     const onActionPress = () => {}
 
     const pickImage = async () => {
