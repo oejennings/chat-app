@@ -24,7 +24,9 @@ This is a chat app for mobile devices using React Native, it will provide users 
 1. Clone the repository
 2. Navigate to project directory
 3. Install project dependencies 
+
     `npm install`
+    
 4. Install Expo
 5. Configure Firestore database
 6. Run Expo
