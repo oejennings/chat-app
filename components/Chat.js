@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import { collection, getDocs, addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import MapView from 'react-native-maps';
 import CustomActions from "./CustomActions";
 
 const Chat = ({ route, navigation, db, isConnected }) => {
