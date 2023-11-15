@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, Button, TextInput, TouchableOpacity, ImageBackground, Alert } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ImageBackground, Alert } from 'react-native';
 import { getAuth, signInAnonymously } from "firebase/auth";
 
 const Start = ({ navigation }) => {
@@ -16,7 +16,7 @@ const Start = ({ navigation }) => {
         }).catch((error) => {
           Alert.alert('Unable to signin, try later');
         })
-      }
+    }
 
  return (
    <ImageBackground source={require("../assets/BackgroundImage.png")} style={styles.container}>
@@ -41,7 +41,7 @@ const Start = ({ navigation }) => {
     </View>
     </ImageBackground>
  );
-}
+};
 
 const styles = StyleSheet.create({
  container: {

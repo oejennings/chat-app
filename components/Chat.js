@@ -1,7 +1,7 @@
 import { GiftedChat, Bubble, InputToolbar } from 'react-native-gifted-chat';
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from 'react-native';
-import { collection, getDocs, addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
+import { StyleSheet, View, KeyboardAvoidingView, Platform } from 'react-native';
+import { collection, addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from 'react-native-maps';
 import CustomActions from "./CustomActions";
@@ -46,7 +46,7 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
           );
         }
         return null;
-      };
+    };
 
    let unsubMessages;
 
@@ -97,7 +97,7 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
                 }
             }}
             />
-        }
+    };
     
  return (
    <View style={[styles.container, {backgroundColor: color}]}>
@@ -117,7 +117,7 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
     {Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null}
    </View>
  );
-}
+};
 
 const styles = StyleSheet.create({
  container: {
