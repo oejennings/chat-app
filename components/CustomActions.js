@@ -1,4 +1,6 @@
 import * as ImagePicker from 'expo-image-picker';
+import * as Location from 'expo-location';
+import MapView from 'react-native-maps';
 import { StyleSheet } from 'react-native';
 
 const CustomActions = ({}) => {
