@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from 'react-native-maps';
 import CustomActions from "./CustomActions";
 
-const Chat = ({ route, navigation, db, isConnected }) => {
+const Chat = ({ route, navigation, db, isConnected, storage }) => {
     const { name, color, userID} = route.params;
     const [messages, setMessages] = useState([]);
     const onSend = (newMessages) => {
