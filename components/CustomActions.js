@@ -1,9 +1,10 @@
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import MapView from 'react-native-maps';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 const CustomActions = ({}) => {
+    const onActionPress = () => {}
 
     const pickImage = async () => {
         let permissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -39,7 +40,11 @@ const CustomActions = ({}) => {
       };
     
     return (
-
+        <TouchableOpacity style={styles.container} onPress={onActionPress}>
+            <View style={[styles.wrapper, wrapperStyle]}>
+                <Text style={[styles.iconText, iconTextStyle]}>+</Text>
+            </View>
+        </TouchableOpacity>
     );
 }
 
